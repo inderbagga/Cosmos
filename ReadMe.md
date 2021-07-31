@@ -10,10 +10,11 @@
 8. HILT support - DONE
 9. Added Coroutine support - DONE
 10. Added Timer Logger - DONE
+10. Added SharedPreferenceManager - DONE
 
 
 # Improvement Areas
-1. add Dao for caching
+1. using Single Soource of Truth pattern inside repo
 2. adding result wrapper for exception handling
 3. Adding a placHolder for image
 4. use view extendion functions
