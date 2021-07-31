@@ -2,6 +2,7 @@ package com.inderbagga.cosmos.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.inderbagga.cosmos.R
@@ -14,7 +15,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject private lateinit var viewModelFactory: InfoViewModelFactory
+    @Inject lateinit var viewModelFactory: InfoViewModelFactory
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: InfoViewModel
@@ -26,6 +27,20 @@ class MainActivity : AppCompatActivity() {
         binding= DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel= ViewModelProvider(this,viewModelFactory).get(InfoViewModel::class.java)
 
+        viewModel.info.observe(this,  {
+
+            it?.let {
+
+                supportActionBar?.subtitle=it.title+" as on "+it.date
+                viewModel.isLoading.postValue(false)
+
+
+                binding.info=it
+                binding.progressBar.visibility= View.GONE
+            }
+        })
+
+        viewModel.getInfo()
 
         binding.lifecycleOwner=this
     }
