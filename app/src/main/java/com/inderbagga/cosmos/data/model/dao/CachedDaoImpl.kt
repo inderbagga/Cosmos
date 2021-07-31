@@ -2,19 +2,20 @@ package com.inderbagga.cosmos.data.model.dao
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.inderbagga.oneinall.data.model.Info
-import com.inderbagga.oneinall.utils.CacheManager
+import com.inderbagga.cosmos.data.dao.CachedDao
+import com.inderbagga.cosmos.data.model.Info
+import com.inderbagga.cosmos.utils.CacheManager
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CachedDaoImpl @Inject constructor(val gson:Gson, val cacheManager: CacheManager): CachedDao {
+class CachedDaoImpl @Inject constructor(private val gson:Gson, private val cacheManager: CacheManager): CachedDao {
 
     override suspend fun getCachedInfo() : Info? {
 
-        return cacheManager.getStoredInfo()?.run {
+        return cacheManager.getStoredInfo().run {
 
-            if(this.isNullOrEmpty()) return null
+            if(this.isEmpty()) return null
 
             gson.fromJson(this, object : TypeToken<Info>() {}.type)
         }

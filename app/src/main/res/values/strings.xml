@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Cosmos</string>
+    <string name="empty_cache">Cache is empty..</string>
+    <string name="internet_not_available">Internet is not connected..</string>
 </resources>
