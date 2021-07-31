@@ -1,8 +1,9 @@
-package com.inderbagga.cosmos
+package com.inderbagga.cosmos.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.inderbagga.cosmos.R
 import com.inderbagga.cosmos.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

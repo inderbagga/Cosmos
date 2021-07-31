@@ -8,7 +8,7 @@ import com.inderbagga.cosmos.remote.API
 import com.inderbagga.cosmos.utils.Network
 
 
-class RepoImpl constructor(val context:Context, private val remoteDao: RemoteDao) : Repo{
+class RepoImpl constructor(private val context:Context, private val remoteDao: RemoteDao) : Repo{
 
     override suspend fun getInfo(): Info? = if(Network.isConnected(context)){
         remoteDao.getRemoteInfo(API.KEY)
