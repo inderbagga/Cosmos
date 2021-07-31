@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.inderbagga.cosmos.R
 import com.inderbagga.cosmos.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

@@ -7,11 +7,11 @@
 5. added DAO, REPO and network utils. - DONE
 6. add permission - DONE
 7. add viewmodel and viewModelFactory - DONE
-
+8. HILT support
 
 
 # Improvement Areas
 1. add Dao for caching
 2. adding result wrapper for exception handling
-3. adding HILT injection
+3. perform constructor/field injection
 4. write viewmodel operations
