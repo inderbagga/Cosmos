@@ -11,6 +11,8 @@ import com.inderbagga.cosmos.ui.viewmodel.InfoViewModel
 import com.inderbagga.cosmos.ui.viewmodel.InfoViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -34,6 +36,11 @@ class MainActivity : AppCompatActivity() {
                 supportActionBar?.subtitle=it.title+" as on "+it.date
                 viewModel.isLoading.postValue(false)
 
+                lifecycleScope.launch {
+
+                    val bitmap= viewModel.fetchImage(it.url).await()
+                    binding.imageView.setImageBitmap(bitmap)
+                }
 
                 binding.info=it
                 binding.progressBar.visibility= View.GONE

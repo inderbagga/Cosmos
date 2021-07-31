@@ -15,4 +15,5 @@
 # Improvement Areas
 1. add Dao for caching
 2. adding result wrapper for exception handling
+3. Adding a placHolder for image
 4. use view extendion functions
