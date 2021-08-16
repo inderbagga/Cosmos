@@ -40,12 +40,10 @@ class MainActivity : AppCompatActivity() {
                 if(Network.isConnected(this)){
                     lifecycleScope.launch {
 
-                        val bitmap= viewModel.fetchImage(it.url).await()
+                        val bitmap= viewModel.fetchImage(it.url)
                         binding.imageView.setImageBitmap(bitmap)
                     }
-                }else {
-                    viewModel.status.postValue(1)
-                }
+                }else viewModel.status.postValue(1)
 
                 binding.info=it
                 binding.progressBar.visibility= View.GONE
@@ -61,7 +59,6 @@ class MainActivity : AppCompatActivity() {
                         1 -> {
                             binding.progressBar.visibility= View.GONE
                             this.subtitle=resources.getString(R.string.internet_not_available)
-
                         }
                         4 -> {
                             binding.progressBar.visibility= View.GONE

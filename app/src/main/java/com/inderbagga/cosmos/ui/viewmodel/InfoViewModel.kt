@@ -37,9 +37,9 @@ class InfoViewModel( private val repo: Repo) : ViewModel() {
         }
     }
 
-    fun fetchImage(url:String) : Deferred<Bitmap> {
+    suspend fun fetchImage(url:String) : Bitmap {
 
-        val _deffered= viewModelScope.async(Dispatchers.IO){
+        val deffered= viewModelScope.async(Dispatchers.IO){
             try {
                 val url = URL(url)
                 return@async BitmapFactory.decodeStream(url.openConnection().getInputStream())
@@ -52,7 +52,7 @@ class InfoViewModel( private val repo: Repo) : ViewModel() {
             }
         }
 
-        return _deffered as Deferred<Bitmap>
+        return (deffered as Deferred<Bitmap>).await()
     }
 
 }
